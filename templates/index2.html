@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karim Sarhan - Software Engineer CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a3a, #2c3e50);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #212b37, #0f1620);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .print-btn:hover {
+            background: linear-gradient(135deg, #ff1f2f, #ce142b);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 31, 47, 0.4);
+        }
+        
+        .a3-container {
+            width: 1189px;  /* A3 width */
+            height: 841px;  /* A3 height */
+            background: white;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #212b37 0%, #0f1620 100%);
+            color: white;
+            padding: 25px 40px 20px;
+            position: relative;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255,31,47,0.8), transparent);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 30%);
+        }
+        
+        .name-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 15px;
+        }
+        
+        .header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .header .title {
+            font-size: 22px;
+            color: #ff1f2f;
+            font-weight: 500;
+            text-align: right;
+            padding-bottom: 5px;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-item a:hover {
+            color: #ff6b6b;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        .left-column {
+            background-color: #f8f9fa;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .right-column {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            background: white;
+        }
+        
+        .section {
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .section-title {
+            color: #212b37;
+            font-size: 20px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #ff1f2f;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .profile-content {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #444;
+        }
+        
+        .profile-content a {
+            color: #ff1f2f;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+        
+        .skill-category {
+            background-color: white;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .skill-category h3 {
+            color: #212b37;
+            margin-bottom: 12px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .skill-category h3 i {
+            color: #ff1f2f;
+        }
+        
+        .skills-list {
+            list-style-type: none;
+        }
+        
+        .skills-list li {
+            margin-bottom: 8px;
+            padding-left: 5px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .skills-list li::before {
+            content: "•";
+            color: #ff1f2f;
+            margin-right: 8px;
+            font-size: 20px;
+        }
+        
+        .education-item {
+            margin-bottom: 20px;
+        }
+        
+        .education-item h3 {
+            color: #212b37;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .education-date {
+            color: #ff1f2f;
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .education-description {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+        
+        .project-category {
+            background-color: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .project-category h3 {
+            color: #212b37;
+            margin-bottom: 12px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .project-category h3 i {
+            color: #ff1f2f;
+        }
+        
+        .project-list {
+            list-style-type: none;
+        }
+        
+        .project-list li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+        
+        .project-list a {
+            color: #212b37;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+        
+        .project-list a:hover {
+            color: #ff1f2f;
+        }
+        
+        .languages-container {
+            display: flex;
+            gap: 30px;
+            padding: 10px 0;
+        }
+        
+        .language-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .language-progress {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: 
+                radial-gradient(white 65%, transparent 66%),
+                conic-gradient(#ff1f2f 100%, #e0e0e0 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .language-progress::before {
+            content: "100%";
+            position: absolute;
+            font-size: 15px;
+            font-weight: 700;
+            color: #212b37;
+        }
+        
+        .language-item:nth-child(2) .language-progress {
+            background: 
+                radial-gradient(white 65%, transparent 66%),
+                conic-gradient(#ff1f2f 90%, #e0e0e0 0);
+        }
+        
+        .language-item:nth-child(2) .language-progress::before {
+            content: "90%";
+        }
+        
+        .language-item h3 {
+            color: #212b37;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .language-label {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .footer {
+            background-color: #212b37;
+            color: rgba(255,255,255,0.7);
+            padding: 12px 40px;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer a {
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                height: 100%;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+            
+            .a3-container {
+                width: 100%;
+                height: 100%;
+                box-shadow: none;
+                margin: 0;
+            }
+            
+            .header {
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+                padding: 20px 40px 15px;
+            }
+            
+            .content-grid, .left-column, .right-column {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 18px;
+            }
+            
+            .skill-category, .project-category {
+                box-shadow: none;
+                border: 1px solid #eee;
+            }
+            
+            .contact-item a[href]:after {
+                content: " (" attr(href) ")";
+                font-size: 0.85em;
+                font-weight: normal;
+            }
+            
+            .project-list a[href]:after {
+                content: " (" attr(href) ")";
+                font-size: 0.85em;
+                font-weight: normal;
+            }
+            
+            @page {
+                size: A3;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-btn" onclick="window.print()">
+        <i class="fas fa-print"></i> Print CV (A3)
+    </button>
+    
+    <div class="a3-container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="name-title">
+                <h1>Karim Sarhan</h1>
+                <div class="title">Software Engineer | Full Stack Web Developer</div>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+0201090760078</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:karimsarhan74@gmail.com">karimsarhan74@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Egypt, Cairo, Mokattam</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <a href="https://karim-simple-protofoliowebsite.vercel.app/">Portfolio Website</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/karim-sarhan-ceo-virusslayer/">LinkedIn Profile</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <a href="https://github.com/KarimSarhancsfd">GitHub Profile</a>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Profile Section -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-user"></i> Professional Profile</h2>
+                    <div class="profile-content">
+                        <p>Passionate full-stack web developer skilled in building robust, user-focused applications. Proficient in HTML, CSS (Bootstrap, Tailwind), JavaScript (React), and backend technologies like TypeScript, Express, NestJS, and TypeORM. I write clean, scalable code with strong design sense and thrive in Agile teams.</p>
+                        <p>Experienced in leading development projects and collaborating effectively with cross-functional teams to deliver high-quality software solutions. Committed to continuous learning and staying current with industry trends and best practices.</p>
+                    </div>
+                </section>
+                
+                <!-- Skills Section -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-check-circle"></i> Technical & Professional Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3><i class="fas fa-laptop-code"></i> Frontend Development</h3>
+                            <ul class="skills-list">
+                                <li>React + Vite</li>
+                                <li>JavaScript (ES6+)</li>
+                                <li>TypeScript</li>
+                                <li>HTML5 & CSS3</li>
+                                <li>Tailwind CSS</li>
+                                <li>Responsive Design</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h3><i class="fas fa-server"></i> Backend Development</h3>
+                            <ul class="skills-list">
+                                <li>Node.js</li>
+                                <li>Express.js</li>
+                                <li>NestJS</li>
+                                <li>TypeORM</li>
+                                <li>RESTful APIs</li>
+                                <li>Database Design</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h3><i class="fas fa-users"></i> Professional Skills</h3>
+                            <ul class="skills-list">
+                                <li>Leadership & Team Management</li>
+                                <li>Agile & Scrum Methodologies</li>
+                                <li>Communication & Collaboration</li>
+                                <li>Problem Solving</li>
+                                <li>Project Planning & Execution</li>
+                                <li>Technical Documentation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Projects Section -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-briefcase"></i> Projects</h2>
+                    <div class="project-grid">
+                        <div class="project-category">
+                            <h3><i class="fas fa-mobile-alt"></i> Responsive Projects (PC & Mobile)</h3>
+                            <ul class="project-list">
+                                <li>
+                                    <a href="https://e-commerce-ivory-five-96.vercel.app/">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Her-Beauty E-commerce
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://green-tech-nine.vercel.app/">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Green-Tech Website
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://karim-sarhan-portofolio.vercel.app/">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Creative Portfolio
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="project-category">
+                            <h3><i class="fas fa-desktop"></i> PC-Only Projects</h3>
+                            <ul class="project-list">
+                                <li>
+                                    <a href="https://karim-admine-pannel.vercel.app/">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Admin Panel Dashboard
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://guess-game-beta-seven.vercel.app/">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Advanced Guess Game
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://pig-game-seven-ecru.vercel.app/">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        Advanced Pig Game
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Education Section -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                    
+                    <div class="education-item">
+                        <h3>Bachelor of Software Engineering</h3>
+                        <div class="education-date"><i class="far fa-calendar-alt"></i> 2019-2023 | New Cairo Technology (NCT)</div>
+                        <div class="education-description">
+                            <p>Graduated in Software Engineering from New Cairo University, combining technical expertise with leadership as an elected student leader. Led campus initiatives while honing skills in React, JavaScript, Tailwind CSS, and embedded systems.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="education-item">
+                        <h3>Advanced Full Stack Development</h3>
+                        <div class="education-date"><i class="far fa-calendar-alt"></i> 2024-2025 | AMIT-LEARNING</div>
+                        <div class="education-description">
+                            <p>Built strong full-stack development skills, mastering both front-end and back-end technologies. Collaborated on projects on GitHub—especially the Learning Management System with mentor <a href="https://www.linkedin.com/in/karim-wagdi">Karim Wagdy</a>. Developed teamwork and version control abilities.</p>
+                            <p><a href="https://github.com/KarimSarhancsfd"><i class="fab fa-github"></i> View GitHub projects</a></p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Languages Section -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-language"></i> Languages</h2>
+                    <div class="languages-container">
+                        <div class="language-item">
+                            <div class="language-progress"></div>
+                            <h3>Arabic</h3>
+                            <div class="language-label">Native Proficiency</div>
+                        </div>
+                        
+                        <div class="language-item">
+                            <div class="language-progress"></div>
+                            <h3>English</h3>
+                            <div class="language-label">Professional Fluency</div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Additional Section -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-star"></i> Certifications</h2>
+                    <div class="education-description" style="padding-left: 10px;">
+                        <p><i class="fas fa-certificate" style="color: #ff1f2f; margin-right: 8px;"></i> Full Stack Web Development Certification (AMIT-LEARNING)</p>
+                        <p><i class="fas fa-certificate" style="color: #ff1f2f; margin-right: 8px;"></i> React & Redux Professional Certification</p>
+                        <p><i class="fas fa-certificate" style="color: #ff1f2f; margin-right: 8px;"></i> Node.js Advanced Concepts</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div>© 2023 Karim Sarhan - Software Engineer</div>
+            <div>Last updated: <span id="current-date"></span></div>
+        </footer>
+    </div>
+    
+    <script>
+        // Set current date
+        const now = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', options);
+        
+        // Print functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add URL after links for print version
+            if (window.matchMedia) {
+                const mediaQueryList = window.matchMedia('print');
+                mediaQueryList.addListener((mql) => {
+                    if (mql.matches) {
+                        // Add URL text after links for print
+                        document.querySelectorAll('a').forEach(link => {
+                            if (link.href) {
+                                const urlText = document.createElement('span');
+                                urlText.textContent = ` (${link.href})`;
+                                urlText.style.fontSize = '0.85em';
+                                urlText.style.fontWeight = 'normal';
+                                link.appendChild(urlText);
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
